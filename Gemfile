@@ -40,6 +40,10 @@ gem 'omniauth-google-oauth2'
 # active admin
 gem 'activeadmin'
 
+gem 'momentjs-rails'
+
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
