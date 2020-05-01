@@ -43,7 +43,7 @@ class BuildingsController < ApplicationController
 
     respond_to do |format|
       if @building.save
-        format.html { redirect_to @building, notice: 'Stavba je bila ustvarjena.' }
+        format.html { redirect_to @building, notice: 'Restavracija je bila ustvarjena.' }
         format.json { render :show, status: :created, location: @building }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class BuildingsController < ApplicationController
   def update
     respond_to do |format|
       if @building.update(building_params)
-        format.html { redirect_to @building, notice: 'Stavaba je bila posodobljena.' }
+        format.html { redirect_to @building, notice: 'Restavracija je bila posodobljena.' }
         format.json { render :show, status: :ok, location: @building }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class BuildingsController < ApplicationController
   def destroy
     @building.destroy
     respond_to do |format|
-      format.html { redirect_to buildings_url, notice: 'Stavba je bila izbrisana.' }
+      format.html { redirect_to buildings_url, notice: 'Restavracija je bila izbrisana.' }
       format.json { head :no_content }
     end
   end

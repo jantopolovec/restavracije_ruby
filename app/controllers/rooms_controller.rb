@@ -29,7 +29,7 @@ class RoomsController < ApplicationController
     # @building.user_id = current_user.id 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to :root , notice: 'Soba je bila ustvarjena.' }
+        format.html { redirect_to :root , notice: 'Miza je bila ustvarjena.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RoomsController < ApplicationController
   def update
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to :root, notice: 'Soba je bila posodobljena.' }
+        format.html { redirect_to :root, notice: 'Miza je bila posodobljena.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to :root, notice: 'Soba je bila izbrisana.' }
+      format.html { redirect_to :root, notice: 'Miza je bila izbrisana.' }
       format.json { head :no_content }
     end
   end
