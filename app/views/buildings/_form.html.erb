@@ -1,0 +1,91 @@
+<%= form_with(model: @building, local: true) do |form| %>
+  <% if @building.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
+
+      <ul>
+        <% building.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+  <div class="form-group row">
+  <%= form.label :ime , class: "col-md-4 col-form-label text-md-right"%>
+  <div class="col-md-6">
+  <%= form.text_field :ime, :class => 'form-control' , :required => true%>
+  </div>
+</div>
+
+  <div class="field">
+    
+    <div class="ocena">
+      Število zvezdic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="starRating" > 
+        <%= form.radio_button :zvezdice, '5', :id => 'rating5'  %>  
+        <label for="rating5">5</label>
+        <%= form.radio_button :zvezdice, '4', :id => 'rating4' %>  
+        <label for="rating4">4</label>
+        <%= form.radio_button :zvezdice, '3', :id => 'rating3', :checked => true %> 
+        <label for="rating3">3</label>
+        <%= form.radio_button :zvezdice, '2' , :id => 'rating2' %>  
+        <label for="rating2">2</label>
+        <%= form.radio_button :zvezdice, '1', :id => 'rating1'  %>  
+        <label for="rating1">1</label>
+      </span>
+       </div>
+  </div>
+ 
+
+<div class="form-group row ">
+    <%= form.label :opis , class: "col-md-4 col-form-label text-md-right"%>
+    <div class="col-md-6">
+    <%= form.text_area :opis, :id => "rating1" , cols: "50", rows: "5",:class => 'form-control' , :required => true%>
+  </div>
+  </div>
+
+  
+
+  <div class="form-group row">
+    <%= form.label :naslov , class: "col-md-4 col-form-label text-md-right"%>
+    <div class="col-md-6">
+    <%= form.text_field :naslov, :class => 'form-control', :required => true %>
+    </div>
+  </div>
+
+ 
+<div class="form-group row">
+                  <%= form.label :kraj, 'Kraj:', class: "col-md-4 col-form-label text-md-right" %>
+                  <div class="col-md-6">
+                    <%= form.select(:kraj, ['Ajdovščina','Arja vas', 'Bled', 'Brežice','Bohinj', 'Celje', 'Cerknica', 'Črnomelj', 'Domžale', 'Dravograd', 'Gornja Radgona', 'Grosuplje', 'Hrastnik', 'Idrija', 'Ilirska Bistrica', 'Izola', 'Jesenice', 'Kamnik', 'Kočevje', 'Koper', 'Kranj', 'Krško', 'Laško', 'Lendava', 'Litija', 'Ljubljana', 'Ljutomer', 'Logatec', 'Maribor', 'Medvode', 'Mengeš', 'Metlika', 'Mežica', 'Murska Sobota', 'Nova Gorica', 'Novo mesto', 'Piran', 'Postojna', 'Prevalje', 'Ptuj', 'Radovljica', 'Ravne na Koroškem', 'Ribnica', 'Rogaška Slatina', 'Sežana', 'Slovenj Gradec', 'Šentjur', 'Tolmin', 'Tržič', 'Velenje', 'Žalec', 'Železniki', 'Žiri'], {}, { :class => 'form-control'}) %>
+                  </div>
+                </div>
+
+  
+
+  <div class="form-group row">
+                
+                  <div class="col-md-6">
+                    <%= form.select(:tip, ['Hotel', 'Vila', 'Apartma', 'Koča'], {}, { :class => 'form-control d-none'}) %>
+                  </div>
+                </div>
+
+ <div class="form-group row">
+    <%= form.label :slike , class: "col-md-4 col-form-label text-md-right"%>
+    <div class="col-md-6">
+  <%= form.file_field :image, multiple:true , :required => true%>
+ </div>
+ </div>
+ 
+<div class="form-group row">
+    <%= form.label :tip, 'Tip stavbe:', class: "col-md-4 col-form-label text-md-right" %>          
+    <div class="col-md-6">
+    <%= form.submit 'Dodaj', :class => 'btn btn-dark btn-lg form-control' %>
+  </div></div>
+
+
+<% end%>

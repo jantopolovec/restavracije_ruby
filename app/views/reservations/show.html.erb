@@ -1,0 +1,45 @@
+<% if @reservation.od > @reservation.do %>
+<p>
+  <strong>Od:</strong>
+  <%= @reservation.do %>
+</p>
+
+<p>
+  <strong>Do:</strong>
+  <%= @reservation.od %>
+</p>
+
+<%else %>
+
+<p>
+  <strong>Od:</strong>
+  <%= @reservation.od %>
+</p>
+
+<p>
+  <strong>Do:</strong>
+  <%= @reservation.do %>
+</p>
+<% end %>
+<p>
+  <strong>User:</strong>
+  <%= @reservation.user_id %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @reservation.room_id %>
+</p>
+
+<p>
+  <strong>Osebe:</strong>
+  <%= @reservation.osebe %>
+</p>
+
+<p>
+  <strong>Cena:</strong>
+  <%= @reservation.cena * @reservation.osebe %>
+</p>
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>

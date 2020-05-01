@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+  <head>
+    <title>Restavracije</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+ 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bager">
+<%= link_to('Restavracije', root_path, class: 'navbar-brand aba') %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item ">
+      <%= link_to('Domov', root_path, class: 'nav-item nav-link aba') %>
+      </li>
+      <li class="nav-item">
+      <% if user_signed_in? %>
+      <%= link_to('Rezervacije',  reservations_path, class: 'nav-item nav-link aba') %>
+      <%end%>
+      </li>
+      
+      <% if user_signed_in? %>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle aba" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Profil
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+        <%= link_to 'Moj profil', edit_user_registration_path, class: 'dropdown-item abaa' %>
+        <%= link_to 'Moje restavracije', mybuildings_path, class: 'dropdown-item abaa' %>
+        <%= link_to 'Rezervacije pri meni', rezervacije_path, class: 'dropdown-item abaa' %>
+        <div class="dropdown-divider"></div>
+        <%= link_to('Odjava', destroy_user_session_path, method: :delete, class: 'dropdown-item abaa') %>
+      </div>
+    </li> <%else%>
+    <li class="nav-item ">
+    <%= link_to "Prijava", new_user_session_path, class:'nav-item nav-link aba' %>
+    </li>
+    <% end %>
+    </ul>
+    <%= form_tag(buildings_path, :method => "get", class:"form-inline my-2 my-lg-0") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Buildings", class:"form-control mr-sm-2" %>
+      <%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0" %>
+    <%end%>
+  </div>
+</nav>
+<div class="container">
+<%= show_notice %>
+<%= show_alert %>
+<%= yield %>
+</div>
+  </body>
+</html>

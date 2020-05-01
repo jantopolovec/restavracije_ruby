@@ -1,0 +1,56 @@
+
+<h1>Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Building</th>
+      <th>Tip</th>
+      <th>Stevilka</th>
+      <th>Klima</th>
+      <th>Wifi</th>
+      <th>Invalidi</th>
+      <th>Zivali</th>
+      <th>Fitnes</th>
+      <th>Kajenje</th>
+      <th>Postrezba</th>
+      <th>Restavracija</th>
+      <th>Bar</th>
+      <th>24recepcija</th>
+      <th>Bazen</th>
+      <th>Dvigalo</th>
+      <th>Cena</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.building_id %></td>
+        <td><%= room.tip %></td>
+        <td><%= room.stevilka %></td>
+        <td><%= room.klima %></td>
+        <td><%= room.wifi %></td>
+        <td><%= room.invalidi %></td>
+        <td><%= room.zivali %></td>
+        <td><%= room.fitnes %></td>
+        <td><%= room.kajenje %></td>
+        <td><%= room.postrezba %></td>
+        <td><%= room.restavracija %></td>
+        <td><%= room.bar %></td>
+        <td><%= room.recepcija %></td>
+        <td><%= room.bazen %></td>
+        <td><%= room.dvigalo %></td>
+        <td><%= room.cena %></td>
+        <td><%= link_to 'Show', room %></td>
+        <td><%= link_to 'Edit', edit_room_path(room) %></td>
+        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Room', new_room_path %>

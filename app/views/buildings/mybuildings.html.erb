@@ -1,0 +1,76 @@
+<br>
+<br>
+
+
+<h1>Moje restavracije</h1> 
+<% if defined?(current_user.id) %>
+<div class="linkposition"><%= link_to 'Nova stavba', new_building_path,class: "link2" %></div>
+<% end %>
+<br><br><br>
+<table>
+  <thead>
+    <tr>
+      <th>Slika</th>
+      <th>Ime</th>
+      <th>Zvezdice</th>
+      <th>Kraj</th>
+      
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buildings.each do |building| %>
+     <tr class="stavba"> 
+      <% if building.image.attached? %>
+      <%y=1%>
+       <% building.image.each do |image| %>
+        <%if y==1%>
+          <td class="img">  <%= link_to building do %><%= image_tag(image, :class => "imgimg", :style => "width:100%") %><%end%> </td>  
+         
+      <% end %>
+      <%y=2%>
+    <% end %>
+   <% end %>
+        <td><%= link_to building do %><div class="link"><%= building.ime%></div><%end%> </td>
+        <td><%= building.zvezdice %></td>
+        <td><%= building.kraj %></td>
+        
+      <!-- <td><%= link_to 'Edit', edit_building_path(building) %></td> 
+        <td><%= link_to 'Destroy', building, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+     
+      </tr> 
+      
+<% end %>
+  </tbody>
+</table>
+
+
+<!--
+<div>
+
+    <% @buildings.each do |building| %>
+      <div class="float">
+      
+      <% if building.image.attached? %>
+       <%y=1%>
+       <% building.image.each do |image| %>
+         <%if y==1%>
+         <div>  <%= link_to building do %><%= image_tag(image, :className => "", :style => "width:100%") %><%end%> </div>
+         <% end %>
+         <%y=2%>
+       <% end %>
+      <% end %>
+       <div>
+        <%= link_to building do %><%= building.ime %><%end%>
+        <%= building.zvezdice %>
+        <%= building.opis %>
+        <%= building.naslov %>
+        <%= building.kraj %>
+        <%= building.tip %>
+        </div>
+      </div>
+    <% end %>
+</div> -->
+<br>
+

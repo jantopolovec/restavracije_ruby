@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ime: MyString
+  zvezdice: 1
+  opis: MyText
+  naslov: MyString
+  kraj: MyString
+  tip: MyString
+
+two:
+  ime: MyString
+  zvezdice: 1
+  opis: MyText
+  naslov: MyString
+  kraj: MyString
+  tip: MyString

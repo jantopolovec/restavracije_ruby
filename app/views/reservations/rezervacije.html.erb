@@ -1,0 +1,53 @@
+<br>
+<h1>Rezervacije pri meni</h1>
+<br>
+<table class="sirina">
+  <thead>
+    <tr>
+    <th>Hotel</th>
+    <th>Soba</th>
+      <th>Od</th>
+      <th>Do</th>
+      <th>Osebe</th>
+      <th>Cena</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+ 
+  <% @buildings.each do |building| %>
+    <% if building.user.id == current_user.id %>
+      <% @rooms.each do |room| %>
+        <% if room.building_id.to_i == building.id.to_i %>
+          <% @reservations.each do |reservation| %>
+            <% if reservation.room_id.to_i == room.id.to_i %>
+              <tr class="stavba">
+                <td><%= building.ime%></td>
+                <td><%= room.stevilka %></td>
+                <% if reservation.od > reservation.do %>
+                  <td><%= reservation.do.strftime("%d-%m-%Y") %></td>
+                  <td><%= reservation.od.strftime("%d-%m-%Y") %></td>
+                <% else %>
+                 <td><%= reservation.od.strftime("%d-%m-%Y") %></td>
+                 <td><%=  reservation.do.strftime("%d-%m-%Y") %></td>
+                <% end %>
+               <td><%= reservation.osebe %></td>
+               <td><%= reservation.cena * reservation.osebe %> €</td>
+               <td><%= link_to 'Izbriši', reservation, method: :delete, data: { confirm: 'Ziher?' }, class:"link2" %></td>
+              </tr>
+            <%end %>
+          <% end %>
+        <%end %>
+      <% end %>
+    <% end%>
+  <% end %>
+  
+  </tbody>
+  </table>
+  
+  
+  
+
+<br>
+

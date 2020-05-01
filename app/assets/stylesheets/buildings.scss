@@ -1,0 +1,233 @@
+// Place all the styles related to the Buildings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.ocena
+{
+   margin-left: 28%; margin-right: 25%;
+    
+}
+a{
+  color           : #0077be;
+  text-decoration : none;
+}
+
+.starRating:not(old){
+  display        : inline-block;
+  width          : 7.5em;
+  height         : 1.5em;
+  overflow       : hidden;
+  vertical-align : bottom;
+  
+}
+
+.starRating:not(old) > input{
+  margin-right : -100%;
+  opacity      : 0;
+}
+
+.starRating:not(old) > label{
+  display         : block;
+  float           : right;
+  position        : relative;
+  background      :  url('./star-off.svg');
+  background-size : contain;
+}
+
+.starRating:not(old) > label:before{
+  content         : '';
+  display         : block;
+  width           : 1.5em;
+  height          : 1.5em;
+  background      : url('./star-on.svg');
+  background-size : contain;
+  opacity         : 0;
+  transition      : opacity 0.2s linear;
+}
+
+.starRating:not(old) > label:hover:before,
+.starRating:not(old) > label:hover ~ label:before,
+.starRating:not(:hover) > :checked ~ label:before{
+  opacity : 1;
+}
+#zvezda
+{
+    width: 20px;
+    height: 20px;
+}
+
+
+/*img*/
+
+* {box-sizing: border-box}
+.mySlides1, .mySlides2 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.konecnik
+{
+  width: 25%!important;
+}
+
+.right
+{
+  text-align:right;
+}
+
+.float
+{
+  float: left;
+  width:500px;
+  margin-right: 20px;
+  margin-bottom: 60px;
+ 
+}
+
+.img
+{
+  width: 33%;
+}
+tr
+{
+
+  text-align: center;
+  border-bottom: 1pt solid rgb(191, 185, 188);
+  border-top: 1pt solid rgb(191, 185, 188);
+  text-decoration: none!important;
+}
+th{
+  background-color: white!important;
+  text-align: center!important;
+}
+.stavba:hover
+{
+  background-color: rgb(234, 232, 233);
+ 
+ 
+}
+td{
+  vertical-align: baseline!important;
+}
+.link
+{
+  color: black!important;
+  text-decoration: none!important;
+}
+.link:visited {
+  color: black!important;
+  text-decoration: none!important;
+}
+a:hover {
+ 
+  text-decoration: none!important;
+}
+.link:hover{
+  color:gray!important;
+  text-decoration: none!important;
+}
+a{
+  text-decoration: none!important;
+}
+
+.imgimg
+{
+ margin-top: 8px;
+}
+
+p.simar
+{
+  font-size: large;
+}
+
+.link2
+{
+  color: black!important;
+  text-decoration: none!important;
+}
+.link2:hover
+{
+  color:gray!important;
+  text-decoration: none!important;
+  background-color: white!important;
+}
+
+.linkposition
+{
+  text-align: right!important;
+  margin-top: -50px!important;
+  margin-right: 20px!important;
+  text-decoration: none!important;
+}
+
+.srv
+{
+  margin-top: 50px;
+}
+p.opis
+{
+  font-size:15px;
+}
+
+.tab 
+{
+  width: 100%;
+}
+
+.odmik
+{
+  margin-top: 10px!important;
+  margin-bottom: 10px!important;
+  margin-left:5px;
+  margin-right: 5px;
+}
+.link3
+{
+  color: black!important;
+  text-decoration: none!important;
+}
+.link3:hover
+{
+  color:gray!important;
+  text-decoration: none!important;
+  background-color: rgb(234, 232, 233);
+ 
+}
+
+.img23
+{
+  max-width: 100%;
+  height: auto;
+}

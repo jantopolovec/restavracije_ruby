@@ -1,0 +1,181 @@
+<script>
+var slideIndex = [1,1];
+var slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex[no]-1].style.display = "block";  
+}
+</script>
+
+
+<br>
+
+
+<p>
+  
+  <h1><%= @building.ime %></h1>
+  <% if defined?(current_user.id) %>
+<%if current_user.id == @building.user_id %>
+<div class="linkposition"><%= link_to 'Uredi', edit_building_path(@building), class: "link2" %> &nbsp;
+<%= link_to 'Izbriši', @building, method: :delete, data: { confirm: 'Are you sure?' }, class: "link2" %></div>
+<% end %> 
+<% end %>
+</p>
+
+<p class="font-weight-light simar srv">
+<%= @building.kraj %>, <%= @building.naslov %>
+</p>
+<p  class="font-weight-light simar">
+  <strong>Zvezdice:</strong>
+  <%= @building.zvezdice %>
+</p>
+
+<p class="opis">
+  <strong>Opis:</strong>
+  <%= @building.opis %>
+</p>
+
+
+
+ 
+
+<div class="slideshow-container">
+<% if @building.image.attached? %>
+  <%y=1%>
+  <% @building.image.each do |image| %>
+    <%if y==1%>
+      <div class="mySlides1" style="display: block;">
+        <%= image_tag(image, :className => "", :style => "width:100%") %> 
+      </div>
+    <% end %>
+
+    <%if y==2%>
+      <div class="mySlides1" style="display: none;">
+        <%= image_tag(image, :className => "", :style => "width:100%") %> 
+      </div>
+    <% end %>
+    <%y=2%>
+    
+  <% end %>
+<% end %>
+
+<a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+<a class="next" onclick="plusSlides(1, 0)" >&#10095;</a>
+
+</div>
+<br><br>
+
+
+
+
+<h1>Mize</h1>
+<% if defined?(current_user.id) %>
+<%if current_user.id == @building.user_id %>
+<div class="linkposition">
+<%= link_to "Dodaj mizo", new_room_path(:build => @building.id), class: "link2" %>
+</div>
+<% end %>
+<% end %><br><br>
+<table class="tab">
+  <thead>
+    <tr>
+      <th>Številka mize</th>
+      <th>Število stolov</th>
+      <th> </th>
+      
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr class="stavba">
+        <td><%= room.stevilka %></td>
+        <td class="bl">
+        <%= room.cena.times do || %>
+          <%= image_tag("chair2.png", :alt => "rss feed", :class => "odmik",:title=>"Stol") %>
+          <%end%>
+         
+        </td>
+        <td>
+        <% if room.klima == 1 %>
+        <%= image_tag("air-conditioner.png", :alt => "rss feed", :class => "odmik",:title=>"Klima") %>
+        <%end%>
+        
+        <% if room.wifi == 1 %>
+        <%= image_tag("wifi.png", :alt => "rss feed", :class => "odmik",:title=>"Wifi") %>
+        <%end%>
+        
+        <% if room.invalidi == 1 %>
+        <%= image_tag("wheelchair.png", :alt => "rss feed", :class => "odmik",:title=>"Za invalide") %>
+        <%end%>
+        
+        <% if room.zivali == 1 %>
+        <%= image_tag("dog.png", :alt => "rss feed", :class => "odmik",:title=>"Živali") %>
+        <%end%>
+       
+        <% if room.fitnes == 1 %>
+        <%= image_tag("gym.png", :alt => "rss feed", :class => "odmik",:title=>"Fitnes") %>
+        <%end%>
+        
+        <% if room.kajenje == 1 %>
+        <%= image_tag("smoke.png", :alt => "rss feed", :class => "odmik",:title=>"Kajenje") %>
+        <%end%>
+       
+        <% if room.postrezba == 1 %>
+        <%= image_tag("food-tray.png", :alt => "rss feed", :class => "odmik",:title=>"Postrežba") %>
+        <%end%>
+        
+        <% if room.restavracija == 1 %>
+        <%= image_tag("fork.png", :alt => "rss feed", :class => "odmik",:title=>"Restavracija") %>
+        <%end%>
+       
+        <% if room.bar == 1 %>
+        <%= image_tag("beer.png", :alt => "rss feed", :class => "odmik",:title=>"Bar") %>
+        <%end%>
+       
+        <% if room.recepcija == 1 %>
+        <%= image_tag("receptionist.png", :alt => "rss feed", :class => "odmik",:title=>"Recepcija") %>
+        <%end%>
+       
+        <% if room.bazen == 1 %>
+        <%= image_tag("pool.png", :alt => "rss feed", :class => "odmik",:title=>"Bazen") %>
+        <%end%>
+       
+        <% if room.dvigalo == 1 %>
+        <%= image_tag("lift.png", :alt => "rss feed", :class => "odmik",:title=>"Dvigalo") %>
+        <%end%>
+        </td>
+        <% if defined?(current_user.id) %>
+       <td> <%= link_to 'Rezervacija', new_reservation_path(:id => room.id), class: "link3"   %></td>
+       <% end %>
+        <% if defined?(current_user.id) %>
+         <%if current_user.id == @building.user_id %>
+  
+        <td><%= link_to 'Uredi', edit_room_path(room,:build => @building.id), class: "link3" %></td>
+        <td><%= link_to 'Izbriši', room, method: :delete, data: { confirm: 'Are you sure?' }, class: "link3" %></td>
+        <% end %> <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br><br><br>
+
+
+
+

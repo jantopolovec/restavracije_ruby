@@ -1,0 +1,58 @@
+<%= form_with(model: reservation, local: true) do |form| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+        <% reservation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+<br>
+<div class="form-group row">
+    <%= form.label :od , :class => 'col-2 col-form-label'%>
+    <div class="col-10">
+    <%= form.date_field :od , min: Date.today+1, :class => 'form-control' , :required => true%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= form.label :do , :class => 'col-2 col-form-label'%>
+    <div class="col-10">
+    <%= form.date_field :do , min: Date.today+1, :class => 'form-control' , :required => true%>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.number_field :room_id, value: params[:id], style: 'display:none' %>
+  </div>
+
+  <div class="form-group row">
+  <%= form.label :osebe , class: "col-2 col-form-label"%>
+  <div class="col-10">
+  <%= form.number_field :osebe, :class => 'form-control' , :required => true, :max => 10,:min => 1%>
+  </div>
+</div>
+
+  
+
+  <% @rooms.each do |room| %>
+ <div class="text-center"> Cena za eno osebo:  <%= room.cena %> €</div>
+  <div class="field text-center">
+  <%= form.number_field :cena, value: room.cena, style: 'display:none' %>
+  </div>
+  <%end%>
+
+
+
+
+  <div class="form-group row mar">
+            
+    <div class="col-md-6">
+    <%= form.submit 'Dodaj', :class => 'btn btn-dark btn-lg form-control' %>
+  </div></div>
+<% end %>

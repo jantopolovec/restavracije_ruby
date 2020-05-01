@@ -1,0 +1,229 @@
+
+<%= form_with(model: room, local: true) do |form| %>
+  <% if room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+        <% room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.number_field :building_id, value: params[:build], style: 'display:none' %>
+  </div>
+
+ 
+
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :tip, 'Tip:', class: "field" , style: 'display:none'%>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :tip, 'ka', :checked => true, class:"form-check-input", style: 'display:none' %> </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :tip, 'a', class:"form-check-input", style: 'display:none' %>  </label>
+  </div>
+</div>
+
+
+
+
+
+  <div class="field">
+    <%= form.label :Številka_mize  , class: ""%>
+    
+    <%= form.number_field :stevilka, :class => '' ,min: 1, :required => true %>
+    
+  </div>
+ 
+
+<div class="d-none">
+  <div class="form-check-row ">
+  <div class="form-check-inline">
+    <%= form.label :klima, 'Klima:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :klima, '1', class:"form-check-input " %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :klima, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+ 
+
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :wifi, 'Wifi:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :wifi, '1', class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :wifi, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+ 
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :invalidi, 'Invalidi:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :invalidi, '1', class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :invalidi, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+  
+
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :zivali, 'Živali:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :zivali, '1', class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :zivali, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+
+
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :fitnes, 'Fitnes:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :fitnes, '1', class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :fitnes, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+  
+  
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :kajenje, 'Kajenje:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :kajenje, '1',  class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :kajenje, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+  
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :postrezba, 'Postrezba:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :postrezba, '1', class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :postrezba, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :restavracija, 'Restavracija:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :restavracija, '1', class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :restavracija, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :bar, 'Bar:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :bar, '1',  class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :bar, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+ 
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :recepcija, 'Recepcija:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :recepcija, '1',  class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :recepcija, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+
+
+  <div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :bazen, 'Bazen:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :bazen, '1', class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :bazen, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+
+  
+<div class="form-check-row">
+  <div class="form-check-inline">
+    <%= form.label :dvigalo, 'Dvigalo:', class: "" %>
+  </div>
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :dvigalo, '1',  class:"form-check-input" %>Da </label>
+  </div>
+
+  <div class="form-check-inline">
+    <label class="form-check-label">  <%= form.radio_button :dvigalo, '0', :checked => true, class:"form-check-input" %> Ne </label>
+  </div>
+</div>
+</div>
+<div class="field">
+    <%= form.label :Število_stolov%>
+    <%= form.number_field :cena ,min: 1,max: 10, :required => true%>
+  </div>
+
+  <div class="form-group row">
+  
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<div class="">
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= form.submit 'Dodaj', :class => 'btn btn-dark btn-lg form-control' %>
+</div></div>
+ 
+<% end %>

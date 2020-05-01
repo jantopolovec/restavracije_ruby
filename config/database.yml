@@ -1,0 +1,24 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: booking
+  username: postgres
+  password: password
+test:
+  <<: *default
+  database: booking_test
+  username: postgres
+  password: password
+production:
+  <<: *default
+  database: d5kufd7g4no63b
+  username: yfgffdeehgvtqy
+  password: e487a5e109f67b07df3cec3a079931fb1f0c28b301e275c2fa1dcd7662d818b9
+  port: 5432
+  url: postgres://yfgffdeehgvtqy:e487a5e109f67b07df3cec3a079931fb1f0c28b301e275c2fa1dcd7662d818b9@ec2-54-247-96-169.eu-west-1.compute.amazonaws.com:5432/d5kufd7g4no63b
+
