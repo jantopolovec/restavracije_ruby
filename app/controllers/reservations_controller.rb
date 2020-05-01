@@ -38,10 +38,17 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @test = Reservation.where("room_id = ?", @reservation.room_id)
     @reservation.user_id = current_user.id
+   
     if @reservation.do > @reservation.od
+      
       @test.each do |t|
         @date1 = @reservation.od
         @date2 = @reservation.do
+
+        if(@date1.day == @date2.day)
+        else
+          @count= @count+1 
+        end
       
         while @date1 < @date2 
           if   (t.od .. t.do).include?(@date1)
@@ -50,8 +57,10 @@ class ReservationsController < ApplicationController
           @count= @count+1
         end
         @date1 = @date1+1.day
-        print @date1
+        print @date1.day
+        print @date2.day
         end
+        
         
       end
       if @count<1
@@ -66,7 +75,7 @@ class ReservationsController < ApplicationController
         end
       else
         respond_to do |format|
-        format.html { redirect_to request.referer, alert: 'Rezervacija ni uspela, ta datum je že zaseden.' }
+        format.html { redirect_to request.referer, alert: 'Rezervacija ni uspela, ta datum je že zaseden ali pa rezervacija traja več kot 1 dan.' }
         format.json { render :show, status: :created, location: @reservation }
         end
       end
