@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 2020_05_01_134301) do
     t.string "naslov"
     t.string "kraj"
     t.string "tip"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
