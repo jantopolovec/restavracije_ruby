@@ -7,12 +7,14 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.where(user_id: current_user.id) 
    @buildings = Building.all
    @rooms = Room.all
+   @users = User.all
   end
 
   def rezervacije
     @reservations = Reservation.all 
    @buildings = Building.all
    @rooms = Room.all
+   @users = User.all
   end
 
   # GET /reservations/1
